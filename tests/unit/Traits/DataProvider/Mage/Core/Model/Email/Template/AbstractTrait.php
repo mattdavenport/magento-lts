@@ -32,6 +32,14 @@ trait AbstractTrait
             'css',
             true,
         ];
+        // Regression: libmagic misdetects this valid stylesheet as "text/x-asm".
+        // A media-type check would reject it; the extension check must accept it.
+        yield 'css file exists, mime misdetected by libmagic' => [
+            true,
+            $_SERVER['TEST_ROOT'] . '/unit/fixtures/files/test-misdetected-mime.css',
+            'css',
+            true,
+        ];
         yield 'css file not exists' => [
             false,
             $_SERVER['TEST_ROOT'] . '/unit/fixtures/files/test.not-exist',

@@ -244,11 +244,24 @@ abstract class Mage_Core_Model_Email_Template_Abstract extends Mage_Core_Model_T
 
     public function validateFileExtension(string $filePath, string $extension): bool
     {
+        $validator = $this->getValidationHelper();
+
         if ($extension === 'css') {
-            $extension = ['css' => ['text/css', 'text/plain']];
+            // libmagic frequently misdetects valid CSS - whose C-style comments and
+            // brace blocks resemble assembler source - as media types such as
+            // "text/x-asm". Validating the detected media type therefore rejects
+            // legitimate stylesheets, makes _getCssFileContent() return an empty
+            // string, and silently strips all inline styles from rendered emails.
+            // The ".css" extension (plus the design-fallback path scoping in
+            // _getCssFileContent()) is a sufficient guard, so validate the extension
+            // directly and use the File constraint only for existence/emptiness.
+            if (!str_ends_with(strtolower($filePath), '.css')) {
+                return false;
+            }
+
+            return $validator->validateFile(value: $filePath)->count() === 0;
         }
 
-        $validator = $this->getValidationHelper();
         return $validator->validateFile(
             value: $filePath,
             extensions: $extension,

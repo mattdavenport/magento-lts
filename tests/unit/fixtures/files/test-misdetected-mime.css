@@ -1,0 +1,93 @@
+/* Realistic stylesheet whose content libmagic misdetects as text/x-asm. */
+/* Used to prove validateFileExtension() trusts the .css extension and not */
+/* the unreliable media-type sniff. See Mage_Core_Model_Email_Template_Abstract. */
+.body-background {
+  background-color: #fff;
+}
+.image-container a {
+  font-size: 14px;
+  color: #fff;
+}
+.image-container a img {
+  float: left;
+}
+.stack-column {
+  display: inline-block;
+  margin: 0 -2px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 340px;
+  vertical-align: top;
+}
+.brand-background {
+  background-color: #007147;
+}
+.header-logo {
+  width: 100%;
+  max-width: 311px;
+  height: auto;
+  max-height: 68px;
+  color: #fff;
+}
+.header-advantages {
+  display: none;
+}
+.title-line1,
+.title-line2 {
+  font-family: 'Sample Font', sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+.title-line1 {
+  color: #f8ec38;
+}
+.title-line2 {
+  color: #fff;
+}
+.title2 {
+  font-family: 'Sample Font', sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: normal;
+  text-align: left;
+  color: #000;
+}
+.text-standard {
+  font-family: 'Sample Font', sans-serif;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: left;
+  padding: 15px 20px;
+  color: #fff;
+}
+.text-standard.last {
+  padding: 15px 20px 35px;
+}
+.text-standard a {
+  color: #f8ec38;
+  text-decoration: none;
+}
+.text-standard .bold {
+  font-weight: bold;
+}
+.text-standard .marked {
+  color: #f8ec38;
+}
+.text-standard .list {
+  Margin: 15px 0 0 40px;
+  padding: 0;
+}
+.text-standard .list--yellow {
+  color: #f8ec38;
+}
+.text-standard .list--yellow span {
+  color: #fff;
+}
+.text-standard .list li {
+  padding: 0 10px;
+}
+.text-standard--black {
+  color: #000;
+}
